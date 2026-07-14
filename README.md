@@ -46,13 +46,17 @@ A production-ready full-stack AI platform that enables users to interact with mu
 
 🚧 **Currently under active development.**
 
-### Upcoming Features
-- 📄 Document Q&A
-- 📂 File Upload
-- 🔍 Enhanced Search Agent
-- 🧠 Improved Memory
-- 🚀 Deployment
+### 🚀 Upcoming Features
 
+- 📄 Document Q&A Agent
+- 📂 File Upload & Document Processing
+- 🔍 Enhanced Web Search Agent
+- 💻 AI Coding Assistant Agent
+- 🖼️ AI Image Generation Agent
+- 📊 AI PowerPoint (PPT) Generation Agent
+- 🧠 Long-Term Conversation Memory
+- ⚡ Multi-Agent Orchestration Improvements
+- 🚀 Production Deployment
 ---
 
 ## 📷 Preview
