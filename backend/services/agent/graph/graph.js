@@ -1,6 +1,6 @@
 import { StateGraph } from "@langchain/langgraph";
 import { AgentState } from "./state.js";
-import { routerNode } from "./router.node.js";
+import { routerNode } from "./router.js";
 import { chatAgent } from "../agents/chat.agent.js";
 import { codingAgent } from "../agents/coding.agent.js";
 import { searchAgent } from "../agents/search.agent.js";
