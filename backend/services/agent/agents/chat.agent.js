@@ -1,11 +1,12 @@
-import { getModel } from "../config/llmModel";
+import { getModel } from "../config/llmModel.js";
 
 export const chatAgent = async(params) =>{
     const llm = await getModel("chat");
     const prompt ="you are AestheAI , an intelligent AI assestent"
     const response = (await llm).invoke([
       {"role": "system",
-      "content": prompt},
+      "content": prompt
+      },
       {
         "role": "human",
         "content":state.prompt
@@ -13,7 +14,7 @@ export const chatAgent = async(params) =>{
     ])
     return {
         ...state,
-        aiResponse:  response.concat
+        aiResponse:  response.content
         
     }
 }

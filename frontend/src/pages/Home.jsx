@@ -5,7 +5,9 @@ import api from "../../utils/axios";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { auth, googleProvider } from "../../utils/firebase";
-
+import Sidebar from "../component/Sidebar";
+import Artifect from "../component/Artifect";
+import ChatArea from "../component/ChatArea";
 const Home = () => {
   const {userData} = useSelector(state => state.user);
    const dispatch = useDispatch()
@@ -37,8 +39,12 @@ const Home = () => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
-          { !userData &&  <div className="w-[340px] bg-[#13151c] border border-white/[0.08] rounded-2xl p-7 flex flex-col gap-5">
+    <div className="fixed inset-0 z-50 flex items-center justify-between bg-black/60 backdrop-blur-sm">
+     <Sidebar/>
+     <ChatArea/>
+     <Artifect/>
+       
+          {!userData &&  <div className="w-[340px] bg-[#13151c] border border-white/[0.08] rounded-2xl p-7 flex flex-col gap-5">
             <div className="flex flex-col gap-1">
               <h2 className="text-[17px] font-semibold text-slate-100 tracking-tight">
                 Welcome to AI
