@@ -1,16 +1,20 @@
 import mongoose from "mongoose";
 
-const conversationSchema = new mongoose.Schema({
-  title:{
-    type:String,
-    defaule:"New Chat"
-  },
-  userId : {
-    type:String
-  }
-},
-{
-    timestamps: true
-})
-const Conveasataion = mongoose.model("Conveasataion", conversationSchema);
-export default Conveasataion;
+const conversationSchema =new mongoose.Schema({
+
+ userId:{
+  type:String,
+  required:true
+ },
+
+ title:{
+  type:String,
+  default:"New Chat"
+ }
+
+},{
+ timestamps:true
+});
+
+const Conversation= mongoose.model("Conversation",conversationSchema);
+export default Conversation
