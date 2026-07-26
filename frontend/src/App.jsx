@@ -18,7 +18,7 @@ const App = () => {
 
 
   return (
-    <div className="flex h-screen items-center justify-center bg-gray-900">
+    <div className=" h-screen items-center  bg-gray-900">
       <Home/>
     </div>
   );

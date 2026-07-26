@@ -15,11 +15,15 @@ export const conversationSlice = createSlice({
   },
   addConversation:(state,action)=>{
     state.conversations.unshift(action.payload)
+  },
+  setSelectConversations:(state,action)=>{
+   state.selectedConversation=action.payload;
+
   }
     }
 })
 
 // Action creators are generated for each case reducer function
-export const {setConversations,addConversation} = conversationSlice.actions
+export const {setConversations,addConversation,setSelectConversations} = conversationSlice.actions
 
 export default conversationSlice.reducer
