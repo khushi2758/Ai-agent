@@ -7,13 +7,14 @@ import { searchAgent } from "../agents/search.agent.js";
 import { pdfAgent } from "../agents/pdf.agent.js";
 import { pptAgent } from "../agents/ppt.agent.js";
 import { imageGenAgent } from "../agents/imageGen.agent.js";
+import { agentState } from './state.js'; // or wherever you define it
+import { router } from "./router.js";
 
 
 
+const workflow = new StateGraph(agentState);
 
-const workflow = new StateGraph(AgentState);
-
-workflow.addNode("router", routerNode);
+workflow.addNode("router", router);
 workflow.addNode("chat", chatAgent);
 workflow.addNode("coding", codingAgent);
 workflow.addNode("search", searchAgent);

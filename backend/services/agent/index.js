@@ -1,11 +1,13 @@
 import express from "express";
-import dotenv from "dotenv";
+import 'dotenv/config';
 import connectDB from "./config/db.js";
 import router from "./router/agent.route.js";
 
 
 
-dotenv.config();
+
+console.log(process.env.GROQ_API_KEY);
+console.log("GOOGLE:", process.env.GOOGLE_API_KEY);
 
 const app = express();
 const port = process.env.PORT || 8003;
