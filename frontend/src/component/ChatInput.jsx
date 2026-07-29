@@ -1,16 +1,22 @@
 import { Mic, Paperclip, SendIcon } from 'lucide-react'
 import React, { useState } from 'react'
 import sendMessage from '../features/sendMessage.js'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { addMessage, setMessages } from '../redux/messageSlice.js'
 
 const ChatInput = () => {
   const [value , setValue] = useState("")
     const { selectedConversation } = useSelector(state => state.conversation);
+    const dispatch = useDispatch();
+      const { messages } = useSelector(state => state.message);
   const handleSentMessage= async()=>{
     const payload ={
        prompt:value.trim(),conversationId:selectedConversation?._id
     }
+    dispatch(addMessage({role:"user", content :value.trim()}))
+    setValue("")
     const data =  await sendMessage(payload);
+        dispatch(addMessage({role:"assistent", content :data}))
     console.log(data)
   }
   return (
@@ -18,7 +24,7 @@ const ChatInput = () => {
       <div className="flex flex-col gap-2 bg-white/[0.03] border border-white/[0.07] rounded-2xl px-4 pt-3.5 pb-3">
            <textarea
            onChange={(e)=>setValue(e.target.value) }
-           value = {value.trim()}
+           value = {value}
           placeholder='ask anything'
           className="w-full bg-transparent outline-none resize-none text-[14px] text-slate-200 placeholder:text-slate-600 leading-relaxed [scrollbar-width:none] [&::-webkit-scrollbar]:hidden disabled:opacity-50"
           rows={3}

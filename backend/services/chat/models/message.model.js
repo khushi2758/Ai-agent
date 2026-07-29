@@ -3,11 +3,11 @@ import mongoose from "mongoose";
 const messagesSchema = new mongoose.Schema({
 conversationId:{
    type:mongoose.Schema.Types.ObjectId,
-   Ref: "Conversations"
+   Ref: "Conversation"
 },
    role:{
     type: String,
-     emum: ["user", "assistant"]
+     enum: ["user", "assistant"]
    
 },
 content:String

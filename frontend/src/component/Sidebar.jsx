@@ -46,8 +46,14 @@ const Sidebar = () => {
     fetchConversations();
   }, [userData?._id]);
   const handleCreateConversation = async () => {
+      try {
     const data = await createConversation();
+
     dispatch(addConversation(data));
+    dispatch(setSelectConversations(data));
+  } catch (error) {
+    console.error("Error creating conversation:", error);
+  }
   };
     if(collapsed){
       return
@@ -157,7 +163,7 @@ const Sidebar = () => {
 
           <div className="flex-1 overflow-y-auto px-2.5 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             {conversations.map((conv) => {
-              const isActive = selectedConversation?._id === conv?._id;
+              const isActive = selectedConversation?._id == conv?._id;
 
               return (
                 <div
@@ -198,8 +204,8 @@ const Sidebar = () => {
                     </div>
                   ) : (
                     <img
-      src={userData.user.avatar}
-    alt={userData.user.name}
+                     src={userData.user.avatar}
+                       alt={userData.user.name}
                       className="w-9 h-9 rounded-[10px] object-cover border-2 border-indigo-500/25"
                       onError={() => setImageError(true)}
                     />

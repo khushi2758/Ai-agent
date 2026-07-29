@@ -2,6 +2,7 @@ import React from "react";
 import { signInWithPopup } from "firebase/auth";
 import { useSelector } from "react-redux";
 import api from "../../utils/axios";
+import { setUserData } from "../redux/user.slice";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { auth, googleProvider } from "../../utils/firebase";
