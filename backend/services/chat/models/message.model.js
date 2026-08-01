@@ -3,14 +3,15 @@ import mongoose from "mongoose";
 const messagesSchema = new mongoose.Schema({
 conversationId:{
    type:mongoose.Schema.Types.ObjectId,
-   Ref: "Conversation"
+   ref: "Conversation"
 },
    role:{
     type: String,
      enum: ["user", "assistant"]
    
 },
-content:String
+content:String,
+images : [String]
 },
 {
     timestamps: true

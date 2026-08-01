@@ -4,4 +4,6 @@ export const agentState = Annotation.Root({ //state
     aiResponse  : Annotation(),
     agent: Annotation(),
    conversationId: Annotation(),
+   searchResults:Annotation(),
+   images:Annotation(),
 })

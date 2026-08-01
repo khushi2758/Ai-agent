@@ -5,12 +5,22 @@ import { getMemory } from "../config/memory.js";
 export const chatAgent = async (state) => {
   const llm = getModel("chat");
 const history = await getMemory(state.conversationId) 
+const searchContext = state.searchResults  ? `
+Web Search Results:
 
+${JSON.stringify(state.searchResults)}
+
+Answer the user using only the above search results.
+`:""
  const systemPrompt = `
 # Identity
 
 You are **AestheAI**, an intelligent, professional, and friendly AI assistant.
-Your goal is to provide accurate, helpful, and well-structured responses.
+Your goal is to provide accurate, helpful,correct and well-structured responses.
+${searchContext}
+If searchContext exists:
+- Use search results to answer.
+- Do not mention internal tools.
 
 # Behavior Rules
 

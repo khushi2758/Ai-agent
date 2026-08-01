@@ -9,7 +9,7 @@ export const createConversation = async (req, res) => {
       userId: userId,
     });
 
-    res.json(conversation);
+  return  res.json(conversation);
   } catch (error) {
     res.status(500).json({
       message: error.message,
@@ -26,7 +26,7 @@ export const getConversations = async (req, res) => {
       updatedAt: -1,
     });
 
-    res.json(conversations);
+   return res.json(conversations);
   } catch (error) {
     res.status(500).json({
       message: error.message,
@@ -37,18 +37,16 @@ export const getConversations = async (req, res) => {
 
 export const saveMessage = async (req, res) => {
   try {
-    const { conversationId, role, content, images, artifacts } = req.body;
+    const { conversationId, role, content ,images} = req.body;
 
     const message = await Message.create({
       conversationId,
-
-      role,
       images,
-      content,
-      artifacts: artifacts || [],
+      role,
+    content
     });
 
-    res.json(message);
+  return  res.json(message);
   } catch (error) {
     res.status(500).json({
       message: error.message,
@@ -60,11 +58,10 @@ export const getMessages = async (req, res) => {
   try {
     const messages = await Message.find({
       conversationId: req.params.conversationId,
-    }).sort({
-      createdAt: 1,
-    });
+    })
+  
 
-    res.json(messages);
+  return  res.json(messages);
   } catch (error) {
     res.status(500).json({
       message: error.message,
@@ -76,9 +73,9 @@ export const updateConversation = async (req, res) => {
   try {
     const { conversationId, title } = req.body;
     const conversation = await Conversation.findByIdAndUpdate(conversationId, {
-      title,
+      title
     });
-    res.json(conversation);
+  return  res.status(200).json(conversation);
   } catch (error) {
     res.status(500).json({
       message: error.message,
