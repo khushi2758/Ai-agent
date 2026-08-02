@@ -238,13 +238,7 @@ AI
 Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/AestheAI.git
-```
-
-Move into the project
-
-```bash
-cd AestheAI
+git clone [https://github.com/yourusername/AestheAI](https://github.com/khushi2758/Ai-agent).git
 ```
 
 Install dependencies
