@@ -161,17 +161,20 @@ A custom-built conversation memory layer designed to improve response quality an
 # 📂 Project Structure
 
 ```text
-AestheAI
+AI
 │
 ├── frontend
+│   ├── src
+│   ├── public
+│   └── utils
 │
-├── services
+├── backend
 │   ├── gateway
-│   ├── auth
-│   ├── chat
-│   └── agent
-│
-├── shared
+│   ├── services
+│   │   ├── auth
+│   │   ├── chat
+│   │   └── agent
+│   └── shared
 │
 └── docker-compose.yml
 ```
