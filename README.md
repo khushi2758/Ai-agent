@@ -306,11 +306,11 @@ It helps the project grow and motivates further development.
 
 **GitHub**
 
-https://github.com/yourusername
+https://github.com/KhushiBera
 
 **LinkedIn**
 
-https://linkedin.com/in/your-profile
+https://linkedin.com/in/KhushiBera
 
 ---
 
