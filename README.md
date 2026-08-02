@@ -1,5 +1,17 @@
 # 🤖 AestheAI
 
+![React](https://img.shields.io/badge/React-19-blue)
+
+![Node](https://img.shields.io/badge/Node.js-Express-green)
+
+![MongoDB](https://img.shields.io/badge/MongoDB-Database-success)
+
+![Redis](https://img.shields.io/badge/Redis-Memory-red)
+
+![LangGraph](https://img.shields.io/badge/LangGraph-AI-purple)
+
+![License](https://img.shields.io/badge/License-MIT-yellow)
+
 > **A production-ready Multi-Agent AI Platform built with React, Node.js, LangGraph, LangChain, Redis, and MongoDB.**
 
 AestheAI is a full-stack AI platform that combines multiple specialized AI agents into a single intelligent application. Instead of relying on one general-purpose assistant, each agent is responsible for a specific task, enabling more accurate, context-aware, and scalable AI interactions.
