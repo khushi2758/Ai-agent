@@ -173,7 +173,7 @@ A custom-built conversation memory layer designed to improve response quality an
 # 📂 Project Structure
 
 ```text
-AI
+
 │
 ├── frontend
 │   ├── src
