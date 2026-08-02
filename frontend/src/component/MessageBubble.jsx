@@ -8,6 +8,16 @@ import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 function MessageBubble({role,content,images}) {
   const isUser = role ==="user"
   const [lightboxSrc, setLightboxSrc] = React.useState(null);
+  const [copiedCode, setCopiedCode] = React.useState("");
+const copyCode = async (code) => {
+  await navigator.clipboard.writeText(code);
+
+  setCopiedCode(code);
+
+  setTimeout(() => {
+    setCopiedCode("");
+  }, 2000);
+};
   return (
      <div className={`flex ${isUser ? "justify-end" : "justify-start"}`}>
       <div
@@ -122,7 +132,7 @@ function MessageBubble({role,content,images}) {
 
       if (!className) {
         return (
-          <code className="px-1.5 py-0.5 rounded bg-white/10 text-pink-400">
+          <code className="px-1.5 py-0.5 rounded bg-white/10 text-indigo-400">
             {value}
           </code>
         );
@@ -138,7 +148,22 @@ function MessageBubble({role,content,images}) {
             <span className="uppercase text-xs text-slate-400">
               {language}
             </span>
-
+  <button
+              onClick={() => copyCode(value)}
+              className="flex items-center gap-1 text-xs"
+            >
+              {copiedCode === value ? (
+                <>
+                  <Check size={14} />
+                  Copied
+                </>
+              ) : (
+                <>
+                  <Copy size={14} />
+                  Copy
+                </>
+              )}
+            </button>
          
 
           </div>

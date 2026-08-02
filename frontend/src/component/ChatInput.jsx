@@ -23,6 +23,7 @@ const ChatInput = () => {
     const dispatch = useDispatch();
       const { messages } = useSelector(state => state.message);
   const handleSentMessage= async()=>{
+    
     const payload ={
        prompt:value.trim(),conversationId:selectedConversation?._id, agent :selectedAgent.toLowerCase()
     }
@@ -125,7 +126,7 @@ const ChatInput = () => {
            value = {value}
           placeholder='ask anything'
           className="w-full bg-transparent outline-none resize-none text-[14px] text-slate-200 placeholder:text-slate-600 leading-relaxed [scrollbar-width:none] [&::-webkit-scrollbar]:hidden disabled:opacity-50"
-          rows={3}
+          rows={2}
         />
          <div className="flex items-center justify-between">  
           <div className="flex items-center gap-1">
