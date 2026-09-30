@@ -8,7 +8,7 @@ import router from "./router/agent.route.js";
 
 console.log(process.env.GROQ_API_KEY);
 console.log("GOOGLE:", process.env.GOOGLE_API_KEY);
-
+console.log("OPENROUTER:", process.env.OPENROUTER_API_KEY);
 const app = express();
 const port = process.env.PORT || 8003;
 app.use(express.json());

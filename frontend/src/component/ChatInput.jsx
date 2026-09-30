@@ -2,7 +2,9 @@ import { Mic ,SendIcon} from 'lucide-react'
 import React, { useState } from 'react'
 import sendMessage from '../features/sendMessage.js'
 import { useDispatch, useSelector } from 'react-redux'
-import { addMessage, setMessages } from '../redux/messageSlice.js'
+import { addMessage, setMessages,setAetifacte } from '../redux/messageSlice.js'
+import { setSelectConversations, setConvTitle } from '../redux/conversationSlice.js'
+
 import {
   Send,
   Paperclip,
@@ -16,21 +18,44 @@ import {
   FileText,
   X,
 } from "lucide-react";
+import { addConversation } from '../redux/conversationSlice.js'
+import { createConversation } from '../features/createConversation.js'
+import { updateConversation } from '../features/updateConversation.js'
 const ChatInput = () => {
   const [value , setValue] = useState("")
-  const [selectedAgent, setSelectedAgent]= useState("Auto")
+  const [selectedAgent, setSelectedAgent]= useState("auto")
     const { selectedConversation } = useSelector(state => state.conversation);
     const dispatch = useDispatch();
       const { messages } = useSelector(state => state.message);
   const handleSentMessage= async()=>{
-    
+    let conversation = selectedConversation;
+
+      if (!conversation) {
+        const newConversation = await createConversation();
+        dispatch(addConversation(newConversation));
+        dispatch(setSelectConversations(newConversation));
+        conversation = newConversation;
+      }
+
+      if (conversation.title === "New Chat") {
+        await updateConversation(conversation._id, value.slice(0, 40));
+        dispatch(
+          setConvTitle({
+            conversationId: conversation._id,
+            title: value.slice(0, 40),
+          }),
+        );
+      }
     const payload ={
        prompt:value.trim(),conversationId:selectedConversation?._id, agent :selectedAgent.toLowerCase()
     }
     dispatch(addMessage({role:"user", content :value.trim()}))
     setValue("")
     const data =  await sendMessage(payload);
-        dispatch(addMessage({role:"assistent", content :data?.answer, images: data.images}))
+
+
+    dispatch(setAetifacte(data.artifacts || []))
+        dispatch(addMessage({role:"assistant", content :data?.answer, images: data.images}))
         
     console.log(data)
   }
@@ -67,9 +92,9 @@ const ChatInput = () => {
     },
 
     {
-      id: "image",
+      id: "vision",
       icon: ImageIcon,
-      label: "Image",
+      label: "vision",
     },
 
     {
