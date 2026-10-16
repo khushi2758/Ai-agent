@@ -2,8 +2,10 @@ import { getModel } from "../config/llmModel.js"
 import axios from "axios";
 import  { getfromS3}  from "../utils/getfromS3.js";
 import  {uploadToS3}  from "../utils/uploadToS3.js";
+import  deductCredits  from "../utils/deductCredits.js";
 export const visionAgent = async(state) =>{
   try {
+
        const llm = await getModel("vision")
   const res =   await llm.invoke(`
 
@@ -38,6 +40,7 @@ const prompt= res.content.trim()
        prompt
       )}`;
       const imageRes = await axios.get(imageUrl,{responseType: "arraybuffer"})
+           await deductCredits(state.userId, "vision");
       const imageBuffer =
       Buffer.from(
          imageRes.data

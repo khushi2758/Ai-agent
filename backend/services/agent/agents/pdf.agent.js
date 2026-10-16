@@ -2,9 +2,10 @@ import { getModel } from "../config/llmModel.js"
 import { generatePdf } from "../utils/generatePdf.js"
 import { getfromS3 } from "../utils/getfromS3.js"
 import { uploadToS3 } from "../utils/uploadToS3.js"
-
+import  deductCredits  from "../utils/deductCredits.js";
 export const pdfAgent = async(state) =>{
     try {
+       
         const llm = await getModel("pdf")
        const prompt = `
 You are an expert document writer and PDF content generator.
@@ -59,6 +60,7 @@ ${state.prompt}
 `
  const res = await llm.invoke(prompt)
  const data =JSON.parse(res.content)
+ await deductCredits(state.userId, "pdf");
  const pdfBuffer = await generatePdf(data);
    const fileName = `pdf-${Date.now()}.pdf`;
      await uploadToS3(

@@ -6,6 +6,7 @@ import axios from "axios";
 export const chat = async (req, res, next) => {
   try {
     const {  prompt, conversationId,agent} = req.body;
+    const userId = req.headers["x-user-id"];
     console.log(req.body);
     
     await axios.post(`${process.env.CHAT_SERVICE}/save-message`, {
@@ -18,6 +19,7 @@ export const chat = async (req, res, next) => {
   prompt,
   conversationId,
   agent,
+  userId
 });
 console.log("GRAPH RESULT:");
 console.dir(result, { depth: null });
